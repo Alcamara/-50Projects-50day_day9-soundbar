@@ -1,14 +1,26 @@
 $(document).ready(readyNow);
 
 function readyNow() {
-    const sounds = [`Ryu's Hadouken`,
-                    `Guile's Sonic Boom`,
-                    `Sagat's Tiger Shot`,
-                      `Sim's Yoga Fire` ]
+    const sounds = [`hadouken`,
+                    `sonicBoom`,
+                    `tigerShot`,
+                      `yogaFire` ]
 
-   sounds.forEach((sound)=>{
+   sounds.forEach((sound, indx)=>{
 
-        $('#buttons').append(`<button >${sound}</button>`)
+        $('#buttons').append(`<button id='${indx}' data-sound='${sound}'class='btn' >${sound}</button>`)
 
+        $(`#${indx}`).on('click',playEffect)
    })
 }
+
+
+function playEffect() {
+    console.log('test');
+    const value = $(this).data('sound')
+    console.log(value);
+
+    $(`#${value}`).trigger('play')
+    $(`#${value}`).siblings('.sound').trigger('pause')
+}
+
