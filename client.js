@@ -16,11 +16,10 @@ function readyNow() {
 
 
 function playEffect() {
-    console.log('test');
+   
     const value = $(this).data('sound')
-    console.log(value);
+    
 
-    $(`#${value}`).trigger('play')
-    $(`#${value}`).siblings('.sound').trigger('pause')
+    $(`#${value}`).trigger('play').siblings('.sound').trigger('pause')
 }
 
